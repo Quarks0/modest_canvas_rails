@@ -56,12 +56,15 @@ ModestCanvas.donutChart = function(container, cloudData, args){
       .classed('donut_segment_select', true)
       .transition()
       .attr('d', arc(focusOuterRadiusFactor, focusInnerRadiusFactor));
-    if(centerSubText != undefined){
-      centerSubText
+    if(centerText != undefined){
+      centerText
         .style('font-size', '1px')
         .style('fill', d.data.color || color(d.data.category))
-        .text(d.data.center_subtext)
+        .html(d.data.center_subtext)
         .style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterSubtextFontSize) + "px"; });
+    }
+    if(centerSubText != undefined){
+      centerSubText.style('display', 'none');
     }
   }
 
@@ -73,12 +76,15 @@ ModestCanvas.donutChart = function(container, cloudData, args){
       .duration(750)
       .ease(d3.easeBounceOut)
       .attr('d', arc(restingOuterRadiusFactor, restingInnerRadiusFactor));
-    if(centerSubText != undefined){
-      centerSubText
+    if(centerText != undefined){
+      centerText
         .style('font-size', '1px')
         .style('fill', cloudData.center_subtext.color)
-        .text(cloudData.center_subtext.text)
+        .html(cloudData.center_text.text)
         .style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterTextFontSize) + "px"; });
+    }
+    if (centerSubText != undefined) {
+      centerSubText.style('display', 'block');
     }
   }
 
@@ -114,7 +120,7 @@ ModestCanvas.donutChart = function(container, cloudData, args){
         .attr('text-anchor', 'middle')
         .style('font-size', '1px')
         .style('fill', cloudData.center_text.color)
-        .text(cloudData.center_text.text)
+        .html(cloudData.center_text.text)
         .style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterTextFontSize) + "px"; });
   }
 
@@ -126,7 +132,7 @@ ModestCanvas.donutChart = function(container, cloudData, args){
         .attr('text-anchor', 'middle')
         .style('font-size', '1px')
         .style('fill', cloudData.center_subtext.color)
-        .text(cloudData.center_subtext.text)
+        .html(cloudData.center_subtext.text)
         .style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterSubtextFontSize) + "px"; });
   }
 }
