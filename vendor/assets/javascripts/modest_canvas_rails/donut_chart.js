@@ -59,9 +59,9 @@ ModestCanvas.donutChart = function(container, cloudData, args){
     if(centerText != undefined){
       centerText
         .style('font-size', '1px')
-        .style('fill', d.data.color || color(d.data.category))
-        .html(d.data.center_subtext)
-        .style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterSubtextFontSize) + "px"; });
+        .style('fill', d.data.color || color(d.data.category));
+      centerText.node().innerHTML = d.data.center_subtext;
+      centerText.style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterSubtextFontSize) + "px"; });
     }
     if(centerSubText != undefined){
       centerSubText.style('display', 'none');
@@ -79,9 +79,9 @@ ModestCanvas.donutChart = function(container, cloudData, args){
     if(centerText != undefined){
       centerText
         .style('font-size', '1px')
-        .style('fill', cloudData.center_subtext.color)
-        .html(cloudData.center_text.text)
-        .style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterTextFontSize) + "px"; });
+        .style('fill', cloudData.center_subtext.color);
+      centerText.node().innerHTML = cloudData.center_text.text;
+      centerText.style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterTextFontSize) + "px"; });
     }
     if (centerSubText != undefined) {
       centerSubText.style('display', 'block');
@@ -119,9 +119,9 @@ ModestCanvas.donutChart = function(container, cloudData, args){
         .attr('y', radius * -0.16)
         .attr('text-anchor', 'middle')
         .style('font-size', '1px')
-        .style('fill', cloudData.center_text.color)
-        .html(cloudData.center_text.text)
-        .style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterTextFontSize) + "px"; });
+        .style('fill', cloudData.center_text.color);
+    centerText.node().innerHTML = cloudData.center_text.text;
+    centerText.style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterTextFontSize) + "px"; });
   }
 
   if(cloudData.center_subtext.enabled){
@@ -131,8 +131,8 @@ ModestCanvas.donutChart = function(container, cloudData, args){
         .attr('y', radius * 0.16)
         .attr('text-anchor', 'middle')
         .style('font-size', '1px')
-        .style('fill', cloudData.center_subtext.color)
-        .html(cloudData.center_subtext.text)
-        .style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterSubtextFontSize) + "px"; });
+        .style('fill', cloudData.center_subtext.color);
+    centerSubText.node().innerHTML = cloudData.center_subtext.text;
+    centerSubText.style("font-size", function(d) { return Math.min((0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().width, (0.8 * restingCircleRadiusFactor * diameter)/this.getBBox().height, maxCenterSubtextFontSize) + "px"; });
   }
 }
